@@ -1,0 +1,15 @@
+E:\alhendal-Websites\Alamana-kuwait\alamana.Application\obj\Debug\net8.0\alamana.Application.csproj.AssemblyReference.cache
+E:\alhendal-Websites\Alamana-kuwait\alamana.Application\obj\Debug\net8.0\alamana.Application.GeneratedMSBuildEditorConfig.editorconfig
+E:\alhendal-Websites\Alamana-kuwait\alamana.Application\obj\Debug\net8.0\alamana.Application.AssemblyInfoInputs.cache
+E:\alhendal-Websites\Alamana-kuwait\alamana.Application\obj\Debug\net8.0\alamana.Application.AssemblyInfo.cs
+E:\alhendal-Websites\Alamana-kuwait\alamana.Application\obj\Debug\net8.0\alamana.Application.csproj.CoreCompileInputs.cache
+E:\alhendal-Websites\Alamana-kuwait\alamana.Application\bin\Debug\net8.0\alamana.Application.deps.json
+E:\alhendal-Websites\Alamana-kuwait\alamana.Application\bin\Debug\net8.0\alamana.Application.dll
+E:\alhendal-Websites\Alamana-kuwait\alamana.Application\bin\Debug\net8.0\alamana.Application.pdb
+E:\alhendal-Websites\Alamana-kuwait\alamana.Application\bin\Debug\net8.0\alamana.Core.dll
+E:\alhendal-Websites\Alamana-kuwait\alamana.Application\bin\Debug\net8.0\alamana.Core.pdb
+E:\alhendal-Websites\Alamana-kuwait\alamana.Application\obj\Debug\net8.0\alamana..F68CF3DF.Up2Date
+E:\alhendal-Websites\Alamana-kuwait\alamana.Application\obj\Debug\net8.0\alamana.Application.dll
+E:\alhendal-Websites\Alamana-kuwait\alamana.Application\obj\Debug\net8.0\refint\alamana.Application.dll
+E:\alhendal-Websites\Alamana-kuwait\alamana.Application\obj\Debug\net8.0\alamana.Application.pdb
+E:\alhendal-Websites\Alamana-kuwait\alamana.Application\obj\Debug\net8.0\ref\alamana.Application.dll

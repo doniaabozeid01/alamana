@@ -1,0 +1,11 @@
+E:\alhendal-Websites\Alamana-kuwait\alamana.Core\bin\Debug\net8.0\alamana.Core.deps.json
+E:\alhendal-Websites\Alamana-kuwait\alamana.Core\bin\Debug\net8.0\alamana.Core.dll
+E:\alhendal-Websites\Alamana-kuwait\alamana.Core\bin\Debug\net8.0\alamana.Core.pdb
+E:\alhendal-Websites\Alamana-kuwait\alamana.Core\obj\Debug\net8.0\alamana.Core.GeneratedMSBuildEditorConfig.editorconfig
+E:\alhendal-Websites\Alamana-kuwait\alamana.Core\obj\Debug\net8.0\alamana.Core.AssemblyInfoInputs.cache
+E:\alhendal-Websites\Alamana-kuwait\alamana.Core\obj\Debug\net8.0\alamana.Core.AssemblyInfo.cs
+E:\alhendal-Websites\Alamana-kuwait\alamana.Core\obj\Debug\net8.0\alamana.Core.csproj.CoreCompileInputs.cache
+E:\alhendal-Websites\Alamana-kuwait\alamana.Core\obj\Debug\net8.0\alamana.Core.dll
+E:\alhendal-Websites\Alamana-kuwait\alamana.Core\obj\Debug\net8.0\refint\alamana.Core.dll
+E:\alhendal-Websites\Alamana-kuwait\alamana.Core\obj\Debug\net8.0\alamana.Core.pdb
+E:\alhendal-Websites\Alamana-kuwait\alamana.Core\obj\Debug\net8.0\ref\alamana.Core.dll

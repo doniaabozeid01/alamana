@@ -1,0 +1,17 @@
+E:\alhendal-Websites\Alamana-kuwait\alamana.Infrastructure\bin\Release\net8.0\alamana.Infrastructure.deps.json
+E:\alhendal-Websites\Alamana-kuwait\alamana.Infrastructure\bin\Release\net8.0\alamana.Infrastructure.runtimeconfig.json
+E:\alhendal-Websites\Alamana-kuwait\alamana.Infrastructure\bin\Release\net8.0\alamana.Infrastructure.dll
+E:\alhendal-Websites\Alamana-kuwait\alamana.Infrastructure\bin\Release\net8.0\alamana.Infrastructure.pdb
+E:\alhendal-Websites\Alamana-kuwait\alamana.Infrastructure\bin\Release\net8.0\alamana.Core.dll
+E:\alhendal-Websites\Alamana-kuwait\alamana.Infrastructure\bin\Release\net8.0\alamana.Core.pdb
+E:\alhendal-Websites\Alamana-kuwait\alamana.Infrastructure\obj\Release\net8.0\alamana.Infrastructure.csproj.AssemblyReference.cache
+E:\alhendal-Websites\Alamana-kuwait\alamana.Infrastructure\obj\Release\net8.0\alamana.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+E:\alhendal-Websites\Alamana-kuwait\alamana.Infrastructure\obj\Release\net8.0\alamana.Infrastructure.AssemblyInfoInputs.cache
+E:\alhendal-Websites\Alamana-kuwait\alamana.Infrastructure\obj\Release\net8.0\alamana.Infrastructure.AssemblyInfo.cs
+E:\alhendal-Websites\Alamana-kuwait\alamana.Infrastructure\obj\Release\net8.0\alamana.Infrastructure.csproj.CoreCompileInputs.cache
+E:\alhendal-Websites\Alamana-kuwait\alamana.Infrastructure\obj\Release\net8.0\alamana..523023DB.Up2Date
+E:\alhendal-Websites\Alamana-kuwait\alamana.Infrastructure\obj\Release\net8.0\alamana.Infrastructure.dll
+E:\alhendal-Websites\Alamana-kuwait\alamana.Infrastructure\obj\Release\net8.0\refint\alamana.Infrastructure.dll
+E:\alhendal-Websites\Alamana-kuwait\alamana.Infrastructure\obj\Release\net8.0\alamana.Infrastructure.pdb
+E:\alhendal-Websites\Alamana-kuwait\alamana.Infrastructure\obj\Release\net8.0\alamana.Infrastructure.genruntimeconfig.cache
+E:\alhendal-Websites\Alamana-kuwait\alamana.Infrastructure\obj\Release\net8.0\ref\alamana.Infrastructure.dll
