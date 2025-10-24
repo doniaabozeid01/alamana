@@ -13,7 +13,8 @@ namespace alamana.Application.Countries.DTOs
         public string NameAr { get; set; } = default!;
         public string CurrencyEn { get; set; } = "USD";  // افتراضي/حسب بلدك
         public string CurrencyAr { get; set; } = "USD";  // افتراضي/حسب بلدك
-
         public string CountryCode { get; set; }
+
+
     }
 }

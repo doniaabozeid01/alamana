@@ -15,5 +15,8 @@ namespace alamana.Application.Countries.Interfaces
         Task<int> CreateAsync(CreateCountryDto dto, CancellationToken ct = default);
         Task UpdateAsync(CountryDto dto, CancellationToken ct = default);
         Task DeleteAsync(int id, CancellationToken ct = default);
+
+        Task<CountryWithWarehouseDto?> GetWarehousesByCountryId(int countryId, CancellationToken ct = default);
+
     }
 }

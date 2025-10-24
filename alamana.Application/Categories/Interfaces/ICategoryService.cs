@@ -14,5 +14,7 @@ namespace alamana.Application.Categories.Interfaces
         Task<int> CreateAsync(CreateCategoryDto dto, CancellationToken ct = default);
         Task UpdateAsync(UpdateCategoryDto dto, CancellationToken ct = default);
         Task DeleteAsync(int id, CancellationToken ct = default);
+        Task<CategoryWithProductsDto?> GetProductsByCountryId (int categoryId, CancellationToken ct = default);
+
     }
 }

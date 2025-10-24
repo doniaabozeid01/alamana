@@ -8,6 +8,7 @@ using alamana.Core.Interfaces.Products;
 using alamana.Core.Interfaces.Warehouses;
 using alamana.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using static Azure.Core.HttpHeader;
 
 namespace alamana.Infrastructure.Repositories.Warehouses
 {
@@ -21,6 +22,13 @@ namespace alamana.Infrastructure.Repositories.Warehouses
             if (excludeId.HasValue)
                 q = q.Where(c => c.Id != excludeId.Value);
             return q.AnyAsync(c => c.Name == name, ct);
+        }
+
+
+
+        public async Task<IReadOnlyList<Warehouse>> GetWarehousesByCountryId(int countryId, CancellationToken ct = default)
+        {
+            return await _dbSet.Where(c => c.CountryId == countryId).ToListAsync();
         }
     }
 }

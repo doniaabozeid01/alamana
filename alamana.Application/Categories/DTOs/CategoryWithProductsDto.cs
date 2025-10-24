@@ -1,0 +1,20 @@
+﻿using alamana.Application.Products.DTOs;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace alamana.Application.Categories.DTOs
+{
+    public class CategoryWithProductsDto
+    {
+        public int Id { get; set; }
+        public string NameEn { get; set; } = default!;
+        public string NameAr { get; set; } = default!;
+        public string? DescriptionEn { get; set; }
+        public string? DescriptionAr { get; set; }
+
+        public List<ProductDto> products { get; set; }
+    }
+}

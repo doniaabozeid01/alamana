@@ -76,15 +76,16 @@ builder.Services.AddScoped<IProductCountryPriceService, ProductCountryPriceServi
 
 
 
-builder.Services.AddAutoMapper(typeof(CategoryProfile).Assembly);
-builder.Services.AddAutoMapper(typeof(ProductProfile).Assembly);
-builder.Services.AddAutoMapper(typeof(WarehouseProfile).Assembly);
-builder.Services.AddAutoMapper(typeof(CountryProfile).Assembly);
-builder.Services.AddAutoMapper(typeof(WarehouseCategoryProfile).Assembly);
-builder.Services.AddAutoMapper(typeof(WarehouseProductProfile).Assembly);
-builder.Services.AddAutoMapper(typeof(ProductCountryPriceProfile).Assembly);
+//builder.Services.AddAutoMapper(typeof(CategoryProfile).Assembly);
+//builder.Services.AddAutoMapper(typeof(ProductProfile).Assembly);
+//builder.Services.AddAutoMapper(typeof(WarehouseProfile).Assembly);
+//builder.Services.AddAutoMapper(typeof(CountryProfile).Assembly);
+//builder.Services.AddAutoMapper(typeof(WarehouseCategoryProfile).Assembly);
+//builder.Services.AddAutoMapper(typeof(WarehouseProductProfile).Assembly);
+//builder.Services.AddAutoMapper(typeof(ProductCountryPriceProfile).Assembly);
 
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 
 

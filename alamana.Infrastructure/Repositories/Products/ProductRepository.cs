@@ -22,6 +22,12 @@ namespace alamana.Infrastructure.Repositories.Products
             return q.AnyAsync(c => c.NameEn == nameEn || c.NameAr == nameAr, ct);
         }
 
+        public async Task<IReadOnlyList<Product>> GetProductsByCategoryId(int categoryId, CancellationToken ct = default)
+        {
+            return await _dbSet.Where(c => c.CategoryId == categoryId).ToListAsync();
+        }
+
+
         //public async Task<List<Category>> GetTreeAsync(CancellationToken ct = default)
         //{
         //    // شجرة من الجذر (ParentId == null) مع مستوى أطفال واحد/اتنين

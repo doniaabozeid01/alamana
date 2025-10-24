@@ -10,6 +10,8 @@ namespace alamana.Core.Interfaces.Warehouses
     public interface IWarehouseRepository : IRepository<Warehouse>
     {
         Task<bool> ExistsByNameAsync(string name, int? excludeId = null, CancellationToken ct = default);
+        Task<IReadOnlyList<Warehouse>> GetWarehousesByCountryId(int countryId, CancellationToken ct = default);
+
 
     }
 }

@@ -8,6 +8,7 @@ using alamana.Core.Interfaces.Categories;
 using alamana.Core.Interfaces.Countries;
 using alamana.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using static Azure.Core.HttpHeader;
 
 namespace alamana.Infrastructure.Repositories.Countries
 {
@@ -22,6 +23,8 @@ namespace alamana.Infrastructure.Repositories.Countries
                 q = q.Where(c => c.Id != excludeId.Value);
             return q.AnyAsync(c => c.NameEn == nameEn || c.NameAr == nameAr, ct);
         }
+
+        
 
         //public async Task<List<Category>> GetTreeAsync(CancellationToken ct = default)
         //{

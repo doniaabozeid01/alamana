@@ -9,10 +9,12 @@ using alamana.Application.Countries.DTOs;
 
 //using alamana.Application.Categories.DTOs;
 using alamana.Application.Countries.Interfaces;
+using alamana.Application.Warehouses.DTOs;
 using alamana.Core.Entities;
 //using alamana.Core.Interfaces.Categories;
 using alamana.Core.Interfaces;
 using alamana.Core.Interfaces.Countries;
+using alamana.Core.Interfaces.Warehouses;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
@@ -25,8 +27,12 @@ namespace alamana.Application.Countries.Services
         private readonly IMapper _mapper;
         private readonly ICountryRepository _repo; // نستخدم المخصص
 
-        public CountryService(IUnitOfWork uow, IMapper mapper, ICountryRepository repo)
+
+        private readonly IWarehouseRepository _warehouseRepository;
+
+        public CountryService(IUnitOfWork uow, IMapper mapper, ICountryRepository repo, IWarehouseRepository warehouseRepository)
         {
+            _warehouseRepository = warehouseRepository;
             _uow = uow;
             _mapper = mapper;
             _repo = repo;
@@ -138,7 +144,33 @@ namespace alamana.Application.Countries.Services
             await _uow.SaveChangesAsync(ct);
         }
 
+        public async Task<CountryWithWarehouseDto?> GetWarehousesByCountryId(int countryId, CancellationToken ct = default)
+        {
+            var Country = await this.GetByIdAsync(countryId);
+            var Warehouses =await _warehouseRepository.GetWarehousesByCountryId(countryId);
+            if (Warehouses is null || !Warehouses.Any())
+                throw new NotFoundException(
+                    $"Warehouses in this Country aren't found.",
+                    "المخازن في البلد المختارة غير موجودة."
+                );
+
+            var warehouseDtos = Warehouses.Select(w => new WarehouseDto
+            {
+                Id = w.Id,
+                Name = w.Name,
+                Location = w.Location
+            }).ToList();
 
 
+            var warehousesCountry = new CountryWithWarehouseDto
+            {
+                Id = countryId,
+                NameEn = Country.NameEn,
+                NameAr = Country.NameAr,
+                Warehouses = warehouseDtos
+            };
+
+            return warehousesCountry;
+        }
     }
 }

@@ -1,12 +1,11 @@
 {
   "Version": 1,
-  "Hash": "rlpVh1tEc/HckKfHvMZBr33QkZnRSu5jWNcfAT2bYKw=",
+  "Hash": "0BeYkRwJgEih2bNz9u5Kj+w7MyNA8ATrkPjI1qHMq48=",
   "Source": "alamana",
   "BasePath": "_content/alamana",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
+  "Assets": []
 }

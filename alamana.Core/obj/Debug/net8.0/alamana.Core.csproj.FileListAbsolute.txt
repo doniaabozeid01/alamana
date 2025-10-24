@@ -9,3 +9,15 @@ E:\alhendal-Websites\Alamana-kuwait\alamana.Core\obj\Debug\net8.0\alamana.Core.d
 E:\alhendal-Websites\Alamana-kuwait\alamana.Core\obj\Debug\net8.0\refint\alamana.Core.dll
 E:\alhendal-Websites\Alamana-kuwait\alamana.Core\obj\Debug\net8.0\alamana.Core.pdb
 E:\alhendal-Websites\Alamana-kuwait\alamana.Core\obj\Debug\net8.0\ref\alamana.Core.dll
+C:\Users\pc\faculty\alamana\alamana-backend\alamana\alamana.Core\bin\Debug\net8.0\alamana.Core.deps.json
+C:\Users\pc\faculty\alamana\alamana-backend\alamana\alamana.Core\bin\Debug\net8.0\alamana.Core.dll
+C:\Users\pc\faculty\alamana\alamana-backend\alamana\alamana.Core\bin\Debug\net8.0\alamana.Core.pdb
+C:\Users\pc\faculty\alamana\alamana-backend\alamana\alamana.Core\obj\Debug\net8.0\alamana.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pc\faculty\alamana\alamana-backend\alamana\alamana.Core\obj\Debug\net8.0\alamana.Core.AssemblyInfoInputs.cache
+C:\Users\pc\faculty\alamana\alamana-backend\alamana\alamana.Core\obj\Debug\net8.0\alamana.Core.AssemblyInfo.cs
+C:\Users\pc\faculty\alamana\alamana-backend\alamana\alamana.Core\obj\Debug\net8.0\alamana.Core.csproj.CoreCompileInputs.cache
+C:\Users\pc\faculty\alamana\alamana-backend\alamana\alamana.Core\obj\Debug\net8.0\alamana.Core.sourcelink.json
+C:\Users\pc\faculty\alamana\alamana-backend\alamana\alamana.Core\obj\Debug\net8.0\alamana.Core.dll
+C:\Users\pc\faculty\alamana\alamana-backend\alamana\alamana.Core\obj\Debug\net8.0\refint\alamana.Core.dll
+C:\Users\pc\faculty\alamana\alamana-backend\alamana\alamana.Core\obj\Debug\net8.0\alamana.Core.pdb
+C:\Users\pc\faculty\alamana\alamana-backend\alamana\alamana.Core\obj\Debug\net8.0\ref\alamana.Core.dll

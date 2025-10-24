@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 using alamana.Application.Categories.DTOs;
 using alamana.Application.Categories.Interfaces;
 using alamana.Application.Common.Exceptions;
+using alamana.Application.Countries.DTOs;
+using alamana.Application.Products.DTOs;
 using alamana.Core.Entities;
 using alamana.Core.Interfaces;
 using alamana.Core.Interfaces.Categories;
+using alamana.Core.Interfaces.Products;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
@@ -20,12 +23,14 @@ namespace alamana.Application.Categories.Services
         private readonly IUnitOfWork _uow;
         private readonly IMapper _mapper;
         private readonly ICategoryRepository _repo; // نستخدم المخصص
+        private readonly IProductRepository _productRepository;
 
-        public CategoryService(IUnitOfWork uow, IMapper mapper, ICategoryRepository repo)
+        public CategoryService(IUnitOfWork uow, IMapper mapper, ICategoryRepository repo, IProductRepository productRepository)
         {
             _uow = uow;
             _mapper = mapper;
             _repo = repo;
+            _productRepository = productRepository;
         }
 
         public async Task<(IEnumerable<CategoryDto> Items, int Total)> GetPagedAsync(string? search, int page, int pageSize, CancellationToken ct = default)
@@ -154,5 +159,44 @@ namespace alamana.Application.Categories.Services
             s = System.Text.RegularExpressions.Regex.Replace(s, @"[^a-z0-9\-]", "");
             return s;
         }
+
+
+
+
+
+        public async Task<CategoryWithProductsDto?> GetProductsByCountryId (int categoryId, CancellationToken ct = default)
+        {
+            var category = await this.GetByIdAsync(categoryId);
+            var products = await _productRepository.GetProductsByCategoryId(categoryId);
+            if (products is null || !products.Any())
+                throw new NotFoundException(
+                    $"Products in this Category aren't found.",
+                    "المنتجات في الفئه المختارة غير موجودة."
+                );
+
+            var productsDtos = products.Select(w => new ProductDto
+            {
+                Id = w.Id,
+                NameEn = w.NameEn,
+                NameAr = w.NameAr,
+                DescriptionEn = w.DescriptionEn,
+                DescriptionAr = w.DescriptionAr,
+                Slug = w.Slug,
+            }).ToList();
+
+
+            var productsCategory = new CategoryWithProductsDto
+            {
+                Id = category.Id,
+                NameEn = category.NameEn,
+                NameAr = category.NameAr,
+                DescriptionEn = category.DescriptionEn, 
+                DescriptionAr = category.DescriptionAr,
+                products = productsDtos,
+            };
+
+            return productsCategory;
+        }
+
     }
 }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("alamana.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+653b64f5df2326a1bcb116f4eb5c655048f21788")]
 [assembly: System.Reflection.AssemblyProductAttribute("alamana.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("alamana.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

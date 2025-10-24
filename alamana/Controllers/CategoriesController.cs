@@ -72,5 +72,20 @@ namespace alamana.Controllers
             await _service.DeleteAsync(id, ct);
             return this.OkSuccess("Category Deleted Successfully", "تم حذف الفئه بنجاح");
         }
+
+
+
+        [HttpGet("{categoryId:int}/products")]
+        public async Task<IActionResult> GetProductsByCategoryIdId(int categoryId, CancellationToken ct)
+        {
+            var products = await _service.GetProductsByCountryId(categoryId, ct);
+            if (products is null)
+                return this.NotFoundError("products in this category aren't found.", "المنتجات في الفئه المختاره غير موجودة");
+
+            return this.OkSuccess("Products in this category fetched successfully", "تم جلب  المنتجات في الفئه المختاره بنجاح", products);
+        }
+
+
+
     }
 }
