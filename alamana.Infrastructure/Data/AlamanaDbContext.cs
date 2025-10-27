@@ -7,10 +7,13 @@ using Microsoft.EntityFrameworkCore;
 using alamana.Core.Entities;
 using alamana.Infrastructure.Data.Configuration;
 using System.Reflection.Emit;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using alamana.Infrastructure.Identity;
 
 namespace alamana.Infrastructure.Data
 {
-    public class AlamanaDbContext : DbContext
+    public class AlamanaDbContext : IdentityDbContext<AppUser, AppRole, Guid> // ✅ لاحظ Guid هنا
+
     {
 
         public AlamanaDbContext (DbContextOptions<AlamanaDbContext> options) : base(options) { }
@@ -30,6 +33,7 @@ namespace alamana.Infrastructure.Data
             // Configurations
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
             modelBuilder.ApplyConfiguration(new WarehouseCategoryConfiguration());
+
         }
 
 

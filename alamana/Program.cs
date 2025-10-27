@@ -30,6 +30,7 @@ using alamana.Core.Interfaces.WarehouseCategory;
 using alamana.Core.Interfaces.WarehouseProduct;
 using alamana.Core.Interfaces.Warehouses;
 using alamana.Infrastructure.Data;
+using alamana.Infrastructure.Identity;
 using alamana.Infrastructure.Repositories;
 using alamana.Infrastructure.Repositories.Categories;
 using alamana.Infrastructure.Repositories.Countries;
@@ -40,6 +41,7 @@ using alamana.Infrastructure.Repositories.WarehouseProduct;
 using alamana.Infrastructure.Repositories.Warehouses;
 using alamana.Middlewares;
 using FluentValidation;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -90,6 +92,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 
 builder.Services.AddValidatorsFromAssembly(typeof(CreateCategoryValidator).Assembly);
+builder.Services.AddIdentityInfrastructure(builder.Configuration);
 
 
 // ? CORS Policy
@@ -106,7 +109,26 @@ builder.Services.AddCors(options =>
 });
 
 
+builder.Services.AddDataProtection();
+builder.Services.AddHttpContextAccessor();
 
+builder.Services
+    .AddIdentityCore<AppUser>(opt =>
+    {
+        opt.Password.RequireDigit = true;
+        opt.Password.RequiredLength = 8;
+        opt.User.RequireUniqueEmail = true;
+    })
+    .AddRoles<AppRole>()
+    .AddEntityFrameworkStores<AlamanaDbContext>()
+    .AddDefaultTokenProviders();
+
+// ?? ???????? AddIdentityCore ????? ??? ??????:
+builder.Services.AddScoped<SignInManager<AppUser>>();
+builder.Services.AddScoped<RoleManager<AppRole>>();
+
+// ????? ???? ??????? ???? ???????
+builder.Services.AddScoped<JwtTokenService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -126,8 +148,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseCors("AppCors");   // <- ??? MapControllers
 
+app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();
