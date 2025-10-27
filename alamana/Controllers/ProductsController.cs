@@ -48,7 +48,7 @@ namespace alamana.Controllers
             if (dto is null)
                 return this.NotFoundError("Product not found.", "المنتج غير موجودة");
 
-            return this.OkSuccess("Product fetched successfully", "تم جلب المنتج بنجاح", dto);
+            return this.OkSuccess("Product fetched successfully", "تم جلب المنتج بنجاح", dto);     
         }
 
 

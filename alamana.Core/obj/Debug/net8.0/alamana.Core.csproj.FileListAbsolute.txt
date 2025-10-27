@@ -21,3 +21,4 @@ C:\Users\pc\faculty\alamana\alamana-backend\alamana\alamana.Core\obj\Debug\net8.
 C:\Users\pc\faculty\alamana\alamana-backend\alamana\alamana.Core\obj\Debug\net8.0\refint\alamana.Core.dll
 C:\Users\pc\faculty\alamana\alamana-backend\alamana\alamana.Core\obj\Debug\net8.0\alamana.Core.pdb
 C:\Users\pc\faculty\alamana\alamana-backend\alamana\alamana.Core\obj\Debug\net8.0\ref\alamana.Core.dll
+E:\alhendal-Websites\Alamana-kuwait\alamana.Core\obj\Debug\net8.0\alamana.Core.sourcelink.json

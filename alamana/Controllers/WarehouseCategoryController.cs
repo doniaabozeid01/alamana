@@ -63,5 +63,38 @@ namespace alamana.Controllers
             await _service.DeleteAsync(id, ct);
             return this.OkSuccess("Warehouse Category Deleted Successfully", "تم حذف فئة المخزن بنجاح");
         }
+
+
+
+
+        [HttpGet("GetCategoriesByWarehouseId/{id:int}")]
+        public async Task<IActionResult> GetCategoriesByWarehouseId (int id, CancellationToken ct)
+        {
+            var dto = await _service.GetCategoriesByWarehouseId(id, ct);
+            if (dto is null)
+                return this.NotFoundError("Warehouse Category not found.", "فئة المخزن غير موجود.");
+
+            return this.OkSuccess("Warehouse Categories fetched successfully", "تم جلب فئات المخزن بنجاح", dto);
+        }
+
+
+
+
+
+        [HttpDelete("DeleteByWarehouseId/{warehouseId:int}/AndCategoryId/{categoryId:int}")]
+        public async Task<IActionResult> DeleteByWarehouseIdAndCategoryId(int warehouseId, int categoryId, CancellationToken ct)
+        {
+            await _service.DeleteByWarehouseIdAndCategoryId(warehouseId,categoryId, ct);
+            return this.OkSuccess("Warehouse Category Deleted Successfully", "تم حذف فئة المخزن بنجاح");
+        }
+
+
+
+
+
+
+
+
+
     }
 }

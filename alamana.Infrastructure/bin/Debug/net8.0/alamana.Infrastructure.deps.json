@@ -935,7 +935,10 @@
       },
       "alamana.Core/1.0.0": {
         "runtime": {
-          "alamana.Core.dll": {}
+          "alamana.Core.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

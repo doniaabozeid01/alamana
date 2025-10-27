@@ -1022,12 +1022,18 @@
           "alamana.Core": "1.0.0"
         },
         "runtime": {
-          "alamana.Application.dll": {}
+          "alamana.Application.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "alamana.Core/1.0.0": {
         "runtime": {
-          "alamana.Core.dll": {}
+          "alamana.Core.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "alamana.Infrastructure/1.0.0": {
@@ -1038,7 +1044,10 @@
           "alamana.Core": "1.0.0"
         },
         "runtime": {
-          "alamana.Infrastructure.dll": {}
+          "alamana.Infrastructure.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

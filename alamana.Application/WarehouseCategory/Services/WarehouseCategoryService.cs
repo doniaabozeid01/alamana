@@ -43,6 +43,11 @@ namespace alamana.Application.WarehouseCategory.Services
 
         public async Task<int> CreateAsync(CreateWarehouseCategoryDto dto, CancellationToken ct = default)
         {
+            if (await _repo.ExistsByWarehouseIdAndCategoryIdAsync(dto.warehouseId,dto.categoryId, null, ct))
+                throw new ConflictException(
+    "Warehouse Category pair (WarehouseId and CategoryId) already exists.",
+    "العلاقة بين المخزن والفئة موجودة بالفعل."
+                );
             // فحص تكرار الاسم
             var entity = _mapper.Map<WarehouseCategories>(dto);
 
@@ -82,9 +87,55 @@ namespace alamana.Application.WarehouseCategory.Services
                 //.Include(c => c.Children)
                 .FirstOrDefaultAsync(c => c.Id == id, ct)
                 ?? throw new NotFoundException(
-    $"Warehouse Category with ID {id} not found.",
-    $"فئة المخزن ذات المعرف {id} غير موجودة."
+                $"Warehouse Category with ID {id} not found.",
+                $"فئة المخزن ذات المعرف {id} غير موجودة."
 );
+
+            //if (entity.Children.Any())
+            //    throw new InvalidOperationException("Cannot delete a category that has child categories.");
+
+            //// Soft delete
+            //entity.IsDeleted = true;
+            _repo.Delete(entity);
+
+            await _uow.SaveChangesAsync(ct);
+        }
+
+        public async Task<IReadOnlyList<categoriesInWarehouseDto>> GetCategoriesByWarehouseId(int id, CancellationToken ct = default)
+        {
+            // تجيبي روابط Warehouse-Category من الـRepo
+            var warehouseCategories = await _repo.GetCategoriesByWarehouseId(id, ct);
+
+            if (warehouseCategories == null || !warehouseCategories.Any())
+                throw new NotFoundException(
+                    $"Warehouse Category with ID {id} not found.",
+                    $"فئات المخزن ذات المعرف {id} غير موجودة."
+                );
+
+            // manual mapping
+            var result = warehouseCategories.Select(x => new categoriesInWarehouseDto
+            {
+                Id = x.categoryId,                 // لو الكيان فيه CategoryId مش Id
+                NameEn = x.category?.NameEn ?? "", // لو Category null، يرجع string فاضي
+                NameAr = x.category?.NameAr ?? ""
+            }).ToList();
+
+            return result;
+        }
+
+
+
+
+        public async Task DeleteByWarehouseIdAndCategoryId(int warehouseId,int categoryId, CancellationToken ct = default)
+        {
+            var entity = await _repo.Query()
+                //.Include(c => c.Children)
+                .FirstOrDefaultAsync(c => c.categoryId == categoryId && c.warehouseId == warehouseId, ct)
+?? throw new NotFoundException(
+    $"Warehouse Category with warehouseId {warehouseId} and categoryId {categoryId} not found.",
+    $"العلاقة بين المخزن بالمعرف {warehouseId} والفئة بالمعرف {categoryId} غير موجودة."
+);
+
 
             //if (entity.Children.Any())
             //    throw new InvalidOperationException("Cannot delete a category that has child categories.");

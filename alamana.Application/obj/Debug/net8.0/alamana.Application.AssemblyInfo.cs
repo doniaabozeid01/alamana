@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("alamana.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+653b64f5df2326a1bcb116f4eb5c655048f21788")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7af75412ad11a7e4414edb5ecc3d510ea2175e8a")]
 [assembly: System.Reflection.AssemblyProductAttribute("alamana.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("alamana.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

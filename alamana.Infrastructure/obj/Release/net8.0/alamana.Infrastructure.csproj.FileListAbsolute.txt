@@ -15,3 +15,4 @@ E:\alhendal-Websites\Alamana-kuwait\alamana.Infrastructure\obj\Release\net8.0\re
 E:\alhendal-Websites\Alamana-kuwait\alamana.Infrastructure\obj\Release\net8.0\alamana.Infrastructure.pdb
 E:\alhendal-Websites\Alamana-kuwait\alamana.Infrastructure\obj\Release\net8.0\alamana.Infrastructure.genruntimeconfig.cache
 E:\alhendal-Websites\Alamana-kuwait\alamana.Infrastructure\obj\Release\net8.0\ref\alamana.Infrastructure.dll
+E:\alhendal-Websites\Alamana-kuwait\alamana.Infrastructure\obj\Release\net8.0\alamana.Infrastructure.sourcelink.json

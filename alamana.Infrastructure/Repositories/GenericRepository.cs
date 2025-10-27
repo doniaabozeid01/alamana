@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using alamana.Core.Entities;
@@ -33,5 +34,16 @@ namespace alamana.Infrastructure.Repositories
         public void Update(T entity) => _dbSet.Update(entity);
 
         public void Delete(T entity) => _dbSet.Remove(entity);
+
+
+        public Task<List<T>> FindAsync(Expression<Func<T, bool>> predicate, CancellationToken ct = default)
+        => _dbSet.Where(predicate).ToListAsync(ct);
+
+        public Task AddRangeAsync(IEnumerable<T> entities, CancellationToken ct = default)
+            => _dbSet.AddRangeAsync(entities, ct); // بدون .AsTask()
+
+
+        public void DeleteRange(IEnumerable<T> entities)
+            => _dbSet.RemoveRange(entities);
     }
 }

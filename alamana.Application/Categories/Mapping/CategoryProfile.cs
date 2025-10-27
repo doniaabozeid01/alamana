@@ -19,6 +19,7 @@ namespace alamana.Application.Categories.Mapping
             CreateMap<UpdateCategoryDto, Category>()
                 .ForMember(d => d.Id, opt => opt.Ignore()); // نحمي الـId
             CreateMap<Category, CategoryDto>();
+            CreateMap<Category, CategoryProductsDto>();
         }
     }
 }

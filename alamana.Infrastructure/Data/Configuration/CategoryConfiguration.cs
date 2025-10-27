@@ -48,5 +48,6 @@ namespace alamana.Infrastructure.Data.Configuration
 
 
         }
+   
     }
 }

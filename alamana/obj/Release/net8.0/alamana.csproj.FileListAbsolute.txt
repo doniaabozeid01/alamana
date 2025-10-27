@@ -157,3 +157,4 @@ E:\alhendal-Websites\Alamana-kuwait\alamana\obj\Release\net8.0\refint\alamana.dl
 E:\alhendal-Websites\Alamana-kuwait\alamana\obj\Release\net8.0\alamana.pdb
 E:\alhendal-Websites\Alamana-kuwait\alamana\obj\Release\net8.0\alamana.genruntimeconfig.cache
 E:\alhendal-Websites\Alamana-kuwait\alamana\obj\Release\net8.0\ref\alamana.dll
+E:\alhendal-Websites\Alamana-kuwait\alamana\obj\Release\net8.0\alamana.sourcelink.json

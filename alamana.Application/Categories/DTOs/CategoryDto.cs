@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using alamana.Application.Products.DTOs;
 
 namespace alamana.Application.Categories.DTOs
 {
@@ -15,5 +16,6 @@ namespace alamana.Application.Categories.DTOs
         public string? DescriptionAr { get; set; }
         public bool IsActive { get; set; }
         public string? Slug { get; set; }
+        //public List<ProductInCategoryDto> products { get; set; }
     }
 }

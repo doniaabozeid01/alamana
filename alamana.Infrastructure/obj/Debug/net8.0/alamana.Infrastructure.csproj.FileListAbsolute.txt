@@ -33,3 +33,4 @@ C:\Users\pc\faculty\alamana\alamana-backend\alamana\alamana.Infrastructure\obj\D
 C:\Users\pc\faculty\alamana\alamana-backend\alamana\alamana.Infrastructure\obj\Debug\net8.0\alamana.Infrastructure.pdb
 C:\Users\pc\faculty\alamana\alamana-backend\alamana\alamana.Infrastructure\obj\Debug\net8.0\alamana.Infrastructure.genruntimeconfig.cache
 C:\Users\pc\faculty\alamana\alamana-backend\alamana\alamana.Infrastructure\obj\Debug\net8.0\ref\alamana.Infrastructure.dll
+E:\alhendal-Websites\Alamana-kuwait\alamana.Infrastructure\obj\Debug\net8.0\alamana.Infrastructure.sourcelink.json

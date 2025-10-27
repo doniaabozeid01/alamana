@@ -15,5 +15,10 @@ namespace alamana.Application.WarehouseCategory.Interfaces
         Task<int> CreateAsync(CreateWarehouseCategoryDto dto, CancellationToken ct = default);
         Task UpdateAsync(WarehouseCategoryDto dto, CancellationToken ct = default);
         Task DeleteAsync(int id, CancellationToken ct = default);
+
+
+        Task<IReadOnlyList<categoriesInWarehouseDto?>> GetCategoriesByWarehouseId (int id, CancellationToken ct = default);
+        Task DeleteByWarehouseIdAndCategoryId(int warehouseId, int categoryId, CancellationToken ct = default);
+
     }
 }

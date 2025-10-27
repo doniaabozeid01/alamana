@@ -59,7 +59,7 @@ namespace alamana.Controllers
         public async Task<IActionResult> CreateWarehouse([FromBody] CreateWarehouseDto dto, CancellationToken ct)
         {
             var id = await _service.CreateAsync(dto, ct);
-            return this.OkSuccess("Warehouse Added Successfully", "تم اضافه المخزن بنجاح");
+            return this.OkSuccess("Warehouse Added Successfully", "تم اضافه المخزن بنجاح",id);
         }
 
 
@@ -81,5 +81,19 @@ namespace alamana.Controllers
             await _service.DeleteAsync(id, ct);
             return this.OkSuccess("Warehouse Deleted Successfully", "تم حذف المخزن بنجاح");
         }
+
+
+
+        [HttpPost("AssignWarehouseByProductsAndCategories")]
+        public async Task<IActionResult> AssignWarehouseByProductsAndCategories ([FromBody] AssignWarehouseDto dto, CancellationToken ct)
+        {
+            await _service.AssignWarehouseByProductsAndCategories(dto, ct);
+            return this.OkSuccess(
+                "Warehouse categories and products assigned successfully.",
+                "تم تعيين الفئات والمنتجات للمخزن بنجاح."
+            );
+        }
+
+
     }
 }

@@ -313,3 +313,4 @@ C:\Users\pc\faculty\alamana\alamana-backend\alamana\alamana\obj\Debug\net8.0\sco
 C:\Users\pc\faculty\alamana\alamana-backend\alamana\alamana\obj\Debug\net8.0\alamana.csproj.CopyComplete
 C:\Users\pc\faculty\alamana\alamana-backend\alamana\alamana\obj\Debug\net8.0\alamana.genruntimeconfig.cache
 C:\Users\pc\faculty\alamana\alamana-backend\alamana\alamana\obj\Debug\net8.0\ref\alamana.dll
+E:\alhendal-Websites\Alamana-kuwait\alamana\obj\Debug\net8.0\alamana.sourcelink.json

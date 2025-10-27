@@ -15,5 +15,9 @@ namespace alamana.Application.Warehouses.Interfaces
         Task<int> CreateAsync(CreateWarehouseDto dto, CancellationToken ct = default);
         Task UpdateAsync(WarehouseDto dto, CancellationToken ct = default);
         Task DeleteAsync(int id, CancellationToken ct = default);
+
+
+        Task AssignWarehouseByProductsAndCategories (AssignWarehouseDto dto, CancellationToken ct = default);
+
     }
 }

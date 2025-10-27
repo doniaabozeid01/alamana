@@ -37,5 +37,19 @@ namespace alamana.Infrastructure.Repositories.Products
         //        .ThenInclude(c => c.Children) // زوّد لو عايز عمق أكبر
         //        .ToListAsync(ct);
         //}
+
+
+
+
+        public async Task<List<Product>> GetProductsByIdsAsync(IEnumerable<int> productIds, CancellationToken ct)
+        {
+            return await _ctx.Products
+                .Where(p => productIds.Contains(p.Id))
+                .ToListAsync(ct);
+        }
+
+
+
+
     }
 }

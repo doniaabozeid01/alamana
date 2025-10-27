@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fD4hQKj4gFWqfTzbjTnkmm4RchmyFpHMvXtBZOI79nKOea+06Xdko2ofyDV8oBBX8tz3F6HSAqzfPfwwkPYukg==",
+  "dgSpecHash": "gL/RDtRzusc=",
   "success": true,
-  "projectFilePath": "C:\\Users\\pc\\faculty\\alamana\\alamana-backend\\alamana\\alamana.Application\\alamana.Application.csproj",
+  "projectFilePath": "E:\\alhendal-Websites\\Alamana-kuwait\\alamana.Application\\alamana.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pc\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

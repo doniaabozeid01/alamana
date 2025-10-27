@@ -29,3 +29,4 @@ C:\Users\pc\faculty\alamana\alamana-backend\alamana\alamana.Application\obj\Debu
 C:\Users\pc\faculty\alamana\alamana-backend\alamana\alamana.Application\obj\Debug\net8.0\refint\alamana.Application.dll
 C:\Users\pc\faculty\alamana\alamana-backend\alamana\alamana.Application\obj\Debug\net8.0\alamana.Application.pdb
 C:\Users\pc\faculty\alamana\alamana-backend\alamana\alamana.Application\obj\Debug\net8.0\ref\alamana.Application.dll
+E:\alhendal-Websites\Alamana-kuwait\alamana.Application\obj\Debug\net8.0\alamana.Application.sourcelink.json

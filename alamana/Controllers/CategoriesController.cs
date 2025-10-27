@@ -78,13 +78,27 @@ namespace alamana.Controllers
         [HttpGet("{categoryId:int}/products")]
         public async Task<IActionResult> GetProductsByCategoryIdId(int categoryId, CancellationToken ct)
         {
-            var products = await _service.GetProductsByCountryId(categoryId, ct);
+            var products = await _service.GetProductsByCategoryId(categoryId, ct);
             if (products is null)
                 return this.NotFoundError("products in this category aren't found.", "المنتجات في الفئه المختاره غير موجودة");
 
             return this.OkSuccess("Products in this category fetched successfully", "تم جلب  المنتجات في الفئه المختاره بنجاح", products);
         }
 
+
+
+        
+[HttpGet("getCategoriesWithProducts")]
+        public async Task<IActionResult> getCategoriesWithProducts( CancellationToken ct = default)
+        {
+            var categories = await _service.getCategoriesWithProducts(ct);
+
+            return this.OkSuccess(
+                "Categories fetched successfully",
+                "تم جلب الفئات بنجاح",
+                categories
+            );
+        }
 
 
     }

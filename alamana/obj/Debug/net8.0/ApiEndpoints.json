@@ -1,6 +1,22 @@
 [
   {
     "ContainingType": "alamana.Controllers.CategoriesController",
+    "Method": "GetProductsByCategoryIdId",
+    "RelativePath": "api/Categories/{categoryId}/products",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "categoryId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "alamana.Controllers.CategoriesController",
     "Method": "CreateCategory",
     "RelativePath": "api/Categories/CreateCategory",
     "HttpMethod": "POST",
@@ -59,6 +75,16 @@
   },
   {
     "ContainingType": "alamana.Controllers.CategoriesController",
+    "Method": "getCategoriesWithProducts",
+    "RelativePath": "api/Categories/getCategoriesWithProducts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "alamana.Controllers.CategoriesController",
     "Method": "GetCategoryById",
     "RelativePath": "api/Categories/GetCategoryById/{id}",
     "HttpMethod": "GET",
@@ -89,6 +115,22 @@
       {
         "Name": "dto",
         "Type": "alamana.Application.Categories.DTOs.UpdateCategoryDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "alamana.Controllers.CountriesController",
+    "Method": "GetWarehousesByCountryId",
+    "RelativePath": "api/Countries/{countryId}/warehouses",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "countryId",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -355,6 +397,22 @@
   },
   {
     "ContainingType": "alamana.Controllers.WarehouseController",
+    "Method": "AssignWarehouseByProductsAndCategories",
+    "RelativePath": "api/Warehouse/AssignWarehouseByProductsAndCategories",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "alamana.Application.Warehouses.DTOs.AssignWarehouseDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "alamana.Controllers.WarehouseController",
     "Method": "CreateWarehouse",
     "RelativePath": "api/Warehouse/CreateWarehouse",
     "HttpMethod": "POST",
@@ -466,9 +524,46 @@
   },
   {
     "ContainingType": "alamana.Controllers.WarehouseCategoryController",
+    "Method": "DeleteByWarehouseIdAndCategoryId",
+    "RelativePath": "api/WarehouseCategory/DeleteByWarehouseId/{warehouseId}/AndCategoryId/{categoryId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "warehouseId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "categoryId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "alamana.Controllers.WarehouseCategoryController",
     "Method": "DeleteWarehouseCategory",
     "RelativePath": "api/WarehouseCategory/DeleteWarehouseCategory/{id}",
     "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "alamana.Controllers.WarehouseCategoryController",
+    "Method": "GetCategoriesByWarehouseId",
+    "RelativePath": "api/WarehouseCategory/GetCategoriesByWarehouseId/{id}",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -545,6 +640,32 @@
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "alamana.Controllers.WarehouseProductController",
+    "Method": "GetProductsByWarehouseCategoryAndCountry",
+    "RelativePath": "api/WarehouseProduct/GetProductsByWarehouseCategoryAndCountry",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "warehouseId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "categoryId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "countryId",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

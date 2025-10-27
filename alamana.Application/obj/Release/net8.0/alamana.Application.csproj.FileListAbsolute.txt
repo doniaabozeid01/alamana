@@ -13,3 +13,4 @@ E:\alhendal-Websites\Alamana-kuwait\alamana.Application\obj\Release\net8.0\alama
 E:\alhendal-Websites\Alamana-kuwait\alamana.Application\obj\Release\net8.0\refint\alamana.Application.dll
 E:\alhendal-Websites\Alamana-kuwait\alamana.Application\obj\Release\net8.0\alamana.Application.pdb
 E:\alhendal-Websites\Alamana-kuwait\alamana.Application\obj\Release\net8.0\ref\alamana.Application.dll
+E:\alhendal-Websites\Alamana-kuwait\alamana.Application\obj\Release\net8.0\alamana.Application.sourcelink.json

@@ -9,5 +9,7 @@ namespace alamana.Core.Interfaces.WarehouseProduct
 {
     public interface IWarehouseProductRepository : IRepository<WarehouseProducts>
     {
+        Task<List<int>> GetProductIdsByWarehouseAndCategoryAsync(int warehouseId, int categoryId, CancellationToken ct);
+
     }
 }

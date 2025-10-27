@@ -11,6 +11,7 @@ namespace alamana.Core.Interfaces.Products
     {
         Task<bool> ExistsByNameAsync(string nameEn, string nameAr, int? excludeId = null, CancellationToken ct = default);
         Task<IReadOnlyList<Product>> GetProductsByCategoryId(int categoryId, CancellationToken ct = default);
+        Task<List<Product>> GetProductsByIdsAsync(IEnumerable<int> productIds, CancellationToken ct);
 
     }
 }

@@ -14,6 +14,8 @@ using Microsoft.EntityFrameworkCore;
 using AutoMapper.QueryableExtensions;
 using alamana.Application.Warehouses.Interfaces;
 using alamana.Application.Common.Exceptions;
+using alamana.Core.Interfaces.WarehouseCategory;
+using alamana.Core.Interfaces.WarehouseProduct;
 
 namespace alamana.Application.Warehouses.Services
 {
@@ -22,12 +24,21 @@ namespace alamana.Application.Warehouses.Services
         private readonly IUnitOfWork _uow;
         private readonly IMapper _mapper;
         private readonly IWarehouseRepository _repo; // نستخدم المخصص
+        private readonly IWarehouseCategoryRepository _warehouseCategoryRepo;
+        private readonly IWarehouseProductRepository _warehouseProductRepo;
 
-        public WarehouseService(IUnitOfWork uow, IMapper mapper, IWarehouseRepository repo)
+
+        //private readonly IGenericRepository<WarehouseCategory> _warehouseCategoryRepo;
+        //private readonly IGenericRepository<WarehouseProduct> _warehouseProductRepo;
+        //private readonly IGenericRepository<Warehouse> _warehouseRepo;
+
+        public WarehouseService(IUnitOfWork uow, IMapper mapper, IWarehouseRepository repo, IWarehouseCategoryRepository warehouseCategoryRepository, IWarehouseProductRepository warehouseProductRepository)
         {
             _uow = uow;
             _mapper = mapper;
             _repo = repo;
+            _warehouseProductRepo = warehouseProductRepository;
+            _warehouseCategoryRepo = warehouseCategoryRepository;
         }
 
         public async Task<(IEnumerable<WarehouseDto> Items, int Total)> GetPagedAsync(string? search, int page, int pageSize, CancellationToken ct = default)
@@ -133,6 +144,82 @@ namespace alamana.Application.Warehouses.Services
             _repo.Delete(entity);
 
             await _uow.SaveChangesAsync(ct);
+        }
+
+        //public Task AssignWarehouseByProductsAndCategories(AssignWarehouseDto dto, CancellationToken ct = default)
+        //{
+
+        //}
+
+
+
+
+
+
+        public async Task AssignWarehouseByProductsAndCategories(AssignWarehouseDto dto, CancellationToken ct = default)
+        {
+            // ✅ 1. تحقّق من وجود المخزن
+            var warehouse = await _repo.GetByIdAsync(dto.warehouseId, ct);
+            if (warehouse == null)
+                throw new KeyNotFoundException($"Warehouse {dto.warehouseId} not found.");
+
+            // ✅ 2. إعداد القوائم
+            var targetCategoryIds = dto.CategoriesIds?.Distinct().ToList() ?? new List<int>();
+            var targetProductIds = dto.ProductsIds?.Distinct().ToList() ?? new List<int>();
+
+            // ✅ 3. WarehouseCategory
+            var existingCatLinks = await _warehouseCategoryRepo.Query()
+                .Where(x => x.warehouseId == dto.warehouseId)
+                .ToListAsync(ct);
+
+            var existingCatIds = existingCatLinks.Select(x => x.categoryId).ToHashSet();
+
+            var catIdsToAdd = targetCategoryIds.Except(existingCatIds).ToList();
+            var catLinksToRemove = existingCatLinks.Where(x => !targetCategoryIds.Contains(x.categoryId)).ToList();
+
+            if (catLinksToRemove.Count > 0)
+            {
+                _warehouseCategoryRepo.DeleteRange(catLinksToRemove);
+                await _uow.SaveChangesAsync(ct);
+            }
+
+            if (catIdsToAdd.Count > 0)
+            {
+                var newCatLinks = catIdsToAdd.Select(id => new WarehouseCategories
+                {
+                    warehouseId = dto.warehouseId,
+                    categoryId = id
+                }).ToList();
+
+                await _warehouseCategoryRepo.AddRangeAsync(newCatLinks, ct);
+            }
+
+            // ✅ 4. WarehouseProduct
+            var existingProdLinks = await _warehouseProductRepo
+                .FindAsync(x => x.warehouseId == dto.warehouseId, ct);
+
+            var existingProdIds = existingProdLinks.Select(x => x.productId).ToHashSet();
+
+            var prodIdsToAdd = targetProductIds.Except(existingProdIds).ToList();
+            var prodLinksToRemove = existingProdLinks.Where(x => !targetProductIds.Contains(x.productId)).ToList();
+
+            if (prodLinksToRemove.Count > 0)
+                 _warehouseProductRepo.DeleteRange(prodLinksToRemove);
+
+            if (prodIdsToAdd.Count > 0)
+            {
+                var newProdLinks = prodIdsToAdd.Select(id => new WarehouseProducts
+                {
+                    warehouseId = dto.warehouseId,
+                    productId = id
+                }).ToList();
+
+                await _warehouseProductRepo.AddRangeAsync(newProdLinks, ct);
+            }
+
+            // ✅ 5. الحفظ
+            await _uow.SaveChangesAsync(ct);
+
         }
 
 

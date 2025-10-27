@@ -9,5 +9,10 @@ namespace alamana.Core.Interfaces.ProductCountryPrices
 {
     public interface IProductCountryPriceRepository : IRepository<ProductCountryPrice>
     {
+
+        Task<List<ProductCountryPrice>> GetPricesByProductIdsAndCountryAsync(IEnumerable<int> productIds, int countryId, CancellationToken ct);
+
+
+
     }
 }

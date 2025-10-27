@@ -62,7 +62,7 @@ namespace alamana.Controllers
         public async Task<IActionResult> CreateCategory([FromBody] CreateCountryDto dto, CancellationToken ct)
         {
             var id = await _service.CreateAsync(dto, ct);
-            return this.OkSuccess("Country Added Successfully", "تم اضافه البلد بنجاح");
+            return this.OkSuccess("Country Added Successfully", "تم اضافه البلد بنجاح",id);
         }
 
 

@@ -250,7 +250,8 @@ namespace alamana.Infrastructure.Migrations
 
                     b.HasIndex("categoryId");
 
-                    b.HasIndex("warehouseId");
+                    b.HasIndex("warehouseId", "categoryId")
+                        .IsUnique();
 
                     b.ToTable("WarehouseCategories");
                 });

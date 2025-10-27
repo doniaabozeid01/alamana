@@ -4024,23 +4024,23 @@
   },
   "packageFolders": {
     "C:\\Users\\pc\\.nuget\\packages\\": {},
-    "C:\\Program Files\\DevExpress 24.1\\Components\\Offline Packages": {}
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pc\\faculty\\alamana\\alamana-backend\\alamana\\alamana.Infrastructure\\alamana.Infrastructure.csproj",
+      "projectUniqueName": "E:\\alhendal-Websites\\Alamana-kuwait\\alamana.Infrastructure\\alamana.Infrastructure.csproj",
       "projectName": "alamana.Infrastructure",
-      "projectPath": "C:\\Users\\pc\\faculty\\alamana\\alamana-backend\\alamana\\alamana.Infrastructure\\alamana.Infrastructure.csproj",
+      "projectPath": "E:\\alhendal-Websites\\Alamana-kuwait\\alamana.Infrastructure\\alamana.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pc\\faculty\\alamana\\alamana-backend\\alamana\\alamana.Infrastructure\\obj\\",
+      "outputPath": "E:\\alhendal-Websites\\Alamana-kuwait\\alamana.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\DevExpress 24.1\\Components\\Offline Packages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
         "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 24.1.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4048,15 +4048,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\DevExpress 24.1\\Components\\System\\Components\\Packages": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\pc\\faculty\\alamana\\alamana-backend\\alamana\\alamana.Core\\alamana.Core.csproj": {
-              "projectPath": "C:\\Users\\pc\\faculty\\alamana\\alamana-backend\\alamana\\alamana.Core\\alamana.Core.csproj"
+            "E:\\alhendal-Websites\\Alamana-kuwait\\alamana.Core\\alamana.Core.csproj": {
+              "projectPath": "E:\\alhendal-Websites\\Alamana-kuwait\\alamana.Core\\alamana.Core.csproj"
             }
           }
         }
@@ -4065,7 +4064,13 @@
         "warnAsError": [
           "NU1605"
         ]
-      }
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net8.0": {
@@ -4106,7 +4111,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -164,7 +164,7 @@ namespace alamana.Application.Categories.Services
 
 
 
-        public async Task<CategoryWithProductsDto?> GetProductsByCountryId (int categoryId, CancellationToken ct = default)
+        public async Task<CategoryWithProductsDto?> GetProductsByCategoryId (int categoryId, CancellationToken ct = default)
         {
             var category = await this.GetByIdAsync(categoryId);
             var products = await _productRepository.GetProductsByCategoryId(categoryId);
@@ -198,5 +198,29 @@ namespace alamana.Application.Categories.Services
             return productsCategory;
         }
 
+        public async Task<IEnumerable<CategoryProductsDto>> getCategoriesWithProducts(CancellationToken ct = default)
+        {
+            var categories = await _repo.getCategoriesWithProducts();
+
+            //var mappedCategories = _mapper.Map<IEnumerable<CategoryProductsDto>>(categories);
+
+
+            var result = categories.Select(c => new CategoryProductsDto
+            {
+                Id = c.Id,
+                NameEn = c.NameEn,
+                NameAr = c.NameAr,
+                products = c.Products?.Select(p => new ProductInCategoryDto
+                {
+                    Id = p.Id,
+                    NameEn = p.NameEn,
+                    NameAr = p.NameAr
+                }).ToList() ?? new List<ProductInCategoryDto>()
+            }).ToList();
+
+
+
+            return result;
+        }
     }
 }

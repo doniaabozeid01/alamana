@@ -9,3 +9,4 @@ E:\alhendal-Websites\Alamana-kuwait\alamana.Core\obj\Release\net8.0\alamana.Core
 E:\alhendal-Websites\Alamana-kuwait\alamana.Core\obj\Release\net8.0\refint\alamana.Core.dll
 E:\alhendal-Websites\Alamana-kuwait\alamana.Core\obj\Release\net8.0\alamana.Core.pdb
 E:\alhendal-Websites\Alamana-kuwait\alamana.Core\obj\Release\net8.0\ref\alamana.Core.dll
+E:\alhendal-Websites\Alamana-kuwait\alamana.Core\obj\Release\net8.0\alamana.Core.sourcelink.json

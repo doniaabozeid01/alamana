@@ -1,4 +1,5 @@
-﻿using alamana.Application.WarehouseCategory.DTOs;
+﻿using System.Collections.Generic;
+using alamana.Application.WarehouseCategory.DTOs;
 using alamana.Application.WarehouseCategory.Interfaces;
 using alamana.Application.WarehouseProduct.DTOs;
 using alamana.Application.WarehouseProduct.Interfaces;
@@ -61,5 +62,51 @@ namespace alamana.Controllers
             await _service.DeleteAsync(id, ct);
             return this.OkSuccess("Warehouse Product Deleted Successfully", "تم حذف المنتج في المخزن بنجاح");
         }
+
+
+
+
+
+
+
+
+        //    [HttpGet("GetProductsByWarehouseCategoryAndCountry")]
+        //    public async Task<IActionResult> GetProductsByWarehouseCategoryAndCountry(
+        //[FromQuery] int warehouseId,
+        //[FromQuery] int categoryId,
+        //[FromQuery] int countryId,
+        //CancellationToken ct)
+        //    {
+        //        var products = await _service.GetProductsByWarehouseCategoryAndCountryAsync(warehouseId, categoryId, countryId, ct);
+
+        //        return this.OkSuccess(
+        //            "Products fetched successfully.",
+        //            "تم جلب المنتجات بنجاح.",
+        //            products
+        //        );
+        //    }
+
+
+
+
+
+        [HttpGet("GetProductsByWarehouseCategoryAndCountry")]
+        public async Task<IActionResult> GetProductsByWarehouseCategoryAndCountry(
+        [FromQuery] int warehouseId,
+        [FromQuery] int categoryId,
+        [FromQuery] int countryId,
+        CancellationToken ct)
+        {
+            var products = await _service.GetProductsWithPriceAsync(warehouseId, categoryId, countryId, ct);
+
+            return this.OkSuccess(
+                "Products fetched successfully.",
+                "تم جلب المنتجات بنجاح.",
+                products
+            );
+        }
+
+
+
     }
 }

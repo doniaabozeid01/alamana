@@ -92,6 +92,18 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddValidatorsFromAssembly(typeof(CreateCategoryValidator).Assembly);
 
 
+// ? CORS Policy
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AppCors", policy =>
+        policy.WithOrigins(
+                "http://localhost:4200"
+            )
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials());
+
+});
 
 
 
@@ -112,6 +124,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("AppCors");   // <- ??? MapControllers
 
 app.UseAuthorization();
 
