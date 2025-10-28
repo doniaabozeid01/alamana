@@ -17,7 +17,7 @@ namespace alamana.Controllers
         private readonly RoleManager<AppRole> _roleManager;
         private readonly IConfiguration _config;
         private readonly JwtTokenService _tokenService; // الخدمة اللي بتولّد JWT
-
+        // master
         public AuthController(
             UserManager<AppUser> userManager,
             SignInManager<AppUser> signInManager,
