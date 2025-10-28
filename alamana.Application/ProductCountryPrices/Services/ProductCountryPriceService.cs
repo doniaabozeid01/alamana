@@ -44,6 +44,13 @@ namespace alamana.Application.ProductCountryPrices.Services
 
         public async Task<int> CreateAsync(CreateProductCountryPriceDto dto, CancellationToken ct = default)
         {
+
+
+            if (await _repo.ExistsByCountryIdAndProductIdAsync(dto.CountryId, dto.ProductId, null, ct))
+                throw new ConflictException(
+    "Warehouse Category pair (CountryId and ProductId) already exists.",
+    "العلاقة بين ألبلد و المنتج موجودة بالفعل."
+                );
             // فحص تكرار الاسم
             var entity = _mapper.Map<ProductCountryPrice>(dto);
 
@@ -92,6 +99,36 @@ namespace alamana.Application.ProductCountryPrices.Services
 
             await _uow.SaveChangesAsync(ct);
         }
+
+
+
+
+        public async Task<List<ProductDetailsWithPriceDto>> GetProductsByCountryIdAsync(int countryId, CancellationToken ct = default)
+        {
+            var productCountryPrices = await _repo.GetProductsByCountryIdAsync(countryId, ct);
+
+            if (productCountryPrices == null || !productCountryPrices.Any())
+                throw new NotFoundException(
+                    $"Products with CountryID {countryId} not found.",
+                    $"المنتجات صاحبة البلد {countryId} غير موجودة."
+                );
+
+            // ✳️ الماب اليدوي
+            var result = productCountryPrices.Select(pcp => new ProductDetailsWithPriceDto
+            {
+                Id = pcp.Id,
+                ProductId = pcp.ProductId,
+                NameEn = pcp.Product.NameEn,
+                NameAr = pcp.Product.NameAr,
+                CurrencyEn = pcp.Country.CurrencyEn,
+                CurrencyAr = pcp.Country.CurrencyAr,
+                Price = pcp.Amount
+            }).ToList();
+
+            return result;
+        }
+
+
 
     }
 }

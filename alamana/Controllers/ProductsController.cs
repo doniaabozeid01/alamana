@@ -83,6 +83,21 @@ namespace alamana.Controllers
             await _service.DeleteAsync(id, ct);
             return this.OkSuccess("Product Deleted Successfully", "تم حذف المنتج بنجاح");
         }
+
+
+
+        [HttpGet("GetAllProductsAsync")]
+        public async Task<IActionResult> GetAllProductsAsync(CancellationToken ct)
+        {
+            var dto = await _service.GetAllAsync(ct);
+            if (dto is null)
+                return this.NotFoundError("Products not found.", "المنتجات غير موجودة");
+
+            return this.OkSuccess("Products fetched successfully", "تم جلب المنتجات بنجاح", dto);
+        }
+
+
+
     }
 
 }

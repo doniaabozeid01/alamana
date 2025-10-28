@@ -18,7 +18,18 @@ namespace alamana.Application.WarehouseProduct.Interfaces
         //    Task<List<ProductWithPriceDto>> GetProductsByWarehouseCategoryAndCountryAsync(
         //int warehouseId, int categoryId, int countryId, CancellationToken ct = default);
 
-        Task<List<ProductWithPriceDto>> GetProductsWithPriceAsync(
-            int warehouseId, int categoryId, int countryId, CancellationToken ct);
+        //Task<List<ProductWithPriceDto>> GetProductsWithPriceAsync(
+        //    int warehouseId, int categoryId, int countryId, CancellationToken ct);
+
+
+
+        Task<List<ProductWithPriceDto>> GetProductsByWarehouseAndCategoryAsync(
+            int warehouseId, int categoryId, CancellationToken ct);
+
+
+        Task DeleteByWarehouseIdAndProductId(int warehouseId, int productId, CancellationToken ct = default);
+
+
+
     }
 }

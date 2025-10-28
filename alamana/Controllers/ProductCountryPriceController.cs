@@ -62,5 +62,18 @@ namespace alamana.Controllers
             await _service.DeleteAsync(id, ct);
             return this.OkSuccess("Product Country Price Deleted Successfully", "تم حذف سعر المنتج في البلد المحددة بنجاح");
         }
+
+
+
+
+        [HttpGet("GetProductsByCountryIdAsync/{countryId:int}")]
+        public async Task<IActionResult> GetProductCountryPriceByProductId(int countryId, CancellationToken ct)
+        {
+            var dto = await _service.GetProductsByCountryIdAsync(countryId, ct);
+            if (dto is null)
+                return this.NotFoundError("Product Country Price not found.", "سعر المنتج في البلد المحددة غير موجود.");
+
+            return this.OkSuccess("Product Country Price fetched successfully", "تم جلب سعر المنتج في البلد المحددة بنجاح", dto);
+        }
     }
 }

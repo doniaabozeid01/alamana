@@ -13,6 +13,12 @@ namespace alamana.Core.Interfaces.ProductCountryPrices
         Task<List<ProductCountryPrice>> GetPricesByProductIdsAndCountryAsync(IEnumerable<int> productIds, int countryId, CancellationToken ct);
 
 
+        Task<bool> ExistsByCountryIdAndProductIdAsync(int countryId, int productId, int? excludeId = null, CancellationToken ct = default);
+
+        Task<List<ProductCountryPrice>> GetAllAsync(CancellationToken ct);
+
+        Task<List<ProductCountryPrice>> GetProductsByCountryIdAsync(int countryId, CancellationToken ct);
+
 
     }
 }

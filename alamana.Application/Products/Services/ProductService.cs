@@ -59,6 +59,19 @@ namespace alamana.Application.Products.Services
             return _mapper.Map<ProductDto>(Product);
         }
 
+
+
+        public async Task<IReadOnlyList<ProductDto?>> GetAllAsync(CancellationToken ct = default)
+        {
+            var Product = await _repo.GetAllAsync(ct);
+            if (Product is null)
+                throw new NotFoundException($"Products not found.", $"المنتجات غير موجودة.");
+
+            return _mapper.Map<IReadOnlyList<ProductDto>>(Product);
+        }
+
+
+
         public async Task<int> CreateAsync(CreateProductDto dto, CancellationToken ct = default)
         {
             // فحص تكرار الاسم

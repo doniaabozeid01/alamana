@@ -50,6 +50,11 @@ namespace alamana.Infrastructure.Repositories.Products
 
 
 
+        public async Task<List<Product>> GetAllAsync(CancellationToken ct)
+        {
+            return await _ctx.Set<Product>().ToListAsync(ct);
+        }
+
 
     }
 }

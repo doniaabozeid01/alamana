@@ -90,14 +90,32 @@ namespace alamana.Controllers
 
 
 
+        //[HttpGet("GetProductsByWarehouseCategoryAndCountry")]
+        //public async Task<IActionResult> GetProductsByWarehouseCategoryAndCountry(
+        //[FromQuery] int warehouseId,
+        //[FromQuery] int categoryId,
+        //[FromQuery] int countryId,
+        //CancellationToken ct)
+        //{
+        //    var products = await _service.GetProductsWithPriceAsync(warehouseId, categoryId, countryId, ct);
+
+        //    return this.OkSuccess(
+        //        "Products fetched successfully.",
+        //        "تم جلب المنتجات بنجاح.",
+        //        products
+        //    );
+        //}
+
+
+
+
         [HttpGet("GetProductsByWarehouseCategoryAndCountry")]
         public async Task<IActionResult> GetProductsByWarehouseCategoryAndCountry(
         [FromQuery] int warehouseId,
         [FromQuery] int categoryId,
-        [FromQuery] int countryId,
         CancellationToken ct)
         {
-            var products = await _service.GetProductsWithPriceAsync(warehouseId, categoryId, countryId, ct);
+            var products = await _service.GetProductsByWarehouseAndCategoryAsync(warehouseId, categoryId, ct);
 
             return this.OkSuccess(
                 "Products fetched successfully.",
@@ -106,6 +124,15 @@ namespace alamana.Controllers
             );
         }
 
+
+
+
+        [HttpDelete("DeleteByWarehouseId/{warehouseId:int}/AndProductId/{productId:int}")]
+        public async Task<IActionResult> DeleteByWarehouseIdAndCategoryId(int warehouseId, int productId, CancellationToken ct)
+        {
+            await _service.DeleteByWarehouseIdAndProductId(warehouseId, productId, ct);
+            return this.OkSuccess("Warehouse Category Deleted Successfully", "تم حذف فئة المخزن بنجاح");
+        }
 
 
     }

@@ -33,6 +33,8 @@ namespace alamana.Infrastructure.Data
             // Configurations
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
             modelBuilder.ApplyConfiguration(new WarehouseCategoryConfiguration());
+            modelBuilder.ApplyConfiguration(new WarehouseProductConfiguration());
+            modelBuilder.ApplyConfiguration(new CountryProductConfiguration());
 
         }
 

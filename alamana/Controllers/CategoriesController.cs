@@ -54,7 +54,7 @@ namespace alamana.Controllers
         public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryDto dto, CancellationToken ct)
         {
             var id = await _service.CreateAsync(dto, ct);
-            return this.OkSuccess("Category Added Successfully", "تم اضافه الفئه بنجاح");
+            return this.OkSuccess("Category Added Successfully", "تم اضافه الفئه بنجاح",id);
         }
 
         [HttpPut("UpdateCategory/{id:int}")]

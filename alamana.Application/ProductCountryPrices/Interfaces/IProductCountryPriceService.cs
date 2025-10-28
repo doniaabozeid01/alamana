@@ -14,5 +14,7 @@ namespace alamana.Application.ProductCountryPrices.Interfaces
         Task<int> CreateAsync(CreateProductCountryPriceDto dto, CancellationToken ct = default);
         Task UpdateAsync(ProductCountryPriceDto dto, CancellationToken ct = default);
         Task DeleteAsync(int id, CancellationToken ct = default);
+        Task<List<ProductDetailsWithPriceDto>> GetProductsByCountryIdAsync(int countryId, CancellationToken ct = default);
+
     }
 }

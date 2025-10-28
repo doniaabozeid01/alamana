@@ -16,6 +16,7 @@ using alamana.Core.Interfaces;
 using alamana.Core.Interfaces.ProductCountryPrices;
 using alamana.Core.Interfaces.Products;
 using alamana.Core.Interfaces.WarehouseProduct;
+using alamana.Core.Interfaces.Warehouses;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
@@ -29,17 +30,21 @@ namespace alamana.Application.WarehouseProduct.Services
         private readonly IWarehouseProductRepository _repo; // نستخدم المخصص
         private readonly IProductCountryPriceRepository _productCountryPriceRepo; // نستخدم المخصص
         private readonly IProductRepository _productRepo; // نستخدم المخصص
+        private readonly IWarehouseRepository _warehouseRepo; // نستخدم المخصص
 
 
 
-        public WarehouseProductService (IUnitOfWork uow, IMapper mapper, IWarehouseProductRepository repo, IProductCountryPriceRepository productCountryPriceRepo, IProductRepository productRepo)
+        public WarehouseProductService(IUnitOfWork uow, IMapper mapper, IWarehouseProductRepository repo, IProductCountryPriceRepository productCountryPriceRepo, IProductRepository productRepo, IWarehouseRepository warehouseRepository)
         {
             _uow = uow;
             _mapper = mapper;
             _repo = repo;
             _productCountryPriceRepo = productCountryPriceRepo;
             _productRepo = productRepo;
+            _warehouseRepo = warehouseRepository;
         }
+
+
         public async Task<WarehouseProductDto?> GetByIdAsync(int id, CancellationToken ct = default)
         {
             var WarehouseProduct = await _repo.GetByIdAsync(id, ct);
@@ -54,6 +59,16 @@ namespace alamana.Application.WarehouseProduct.Services
 
         public async Task<int> CreateAsync(CreateWarehouseProductDto dto, CancellationToken ct = default)
         {
+
+
+            if (await _repo.ExistsByWarehouseIdAndCategoryIdAsync(dto.warehouseId, dto.productId, null, ct))
+                throw new ConflictException(
+    "Warehouse Category pair (WarehouseId and product) already exists.",
+    "العلاقة بين المخزن و المنتج موجودة بالفعل."
+                );
+
+
+
             // فحص تكرار الاسم
             var entity = _mapper.Map<WarehouseProducts>(dto);
 
@@ -116,39 +131,107 @@ namespace alamana.Application.WarehouseProduct.Services
 
 
 
-        public async Task<List<ProductWithPriceDto>> GetProductsWithPriceAsync(
-            int warehouseId, int categoryId, int countryId, CancellationToken ct)
+        //public async Task<List<ProductWithPriceDto>> GetProductsWithPriceAsync(
+        //    int warehouseId, int categoryId, int countryId, CancellationToken ct)
+        //{
+        //    // 1. جيبي IDs المنتجات اللي في المخزن والفئة دي
+        //    var productIds = await _repo.GetProductIdsByWarehouseAndCategoryAsync(warehouseId, categoryId, ct);
+
+        //    if (!productIds.Any())
+        //        throw new NotFoundException("No products found.", "لا توجد منتجات.");
+
+        //    // 2. جيبي تفاصيل المنتجات
+        //    var products = await _productRepo.GetProductsByIdsAsync(productIds, ct);
+
+        //    // 3. جيبي أسعارها للبلد المطلوب
+        //    var prices = await _productCountryPriceRepo.GetPricesByProductIdsAndCountryAsync(productIds, countryId, ct);
+
+        //    // 4. ركّبي النتيجة
+        //    var result = (from p in products
+        //                  join pr in prices on p.Id equals pr.ProductId into prj
+        //                  from pr in prj.DefaultIfEmpty()
+        //                  select new ProductWithPriceDto
+        //                  {
+        //                      ProductId = p.Id,
+        //                      NameEn = p.NameEn,
+        //                      NameAr = p.NameAr,
+        //                      DescriptionEn = p.DescriptionEn,
+        //                      DescriptionAr = p.DescriptionAr,
+        //                      Price = pr?.Amount ?? 0,
+        //                      CurrencyEn = pr?.Country?.CurrencyEn,
+        //                      CurrencyAr = pr?.Country?.CurrencyAr,
+        //                      CountryCode = pr?.Country?.CountryCode,
+        //                  }).ToList();
+
+        //    return result;
+        //}
+
+
+
+
+
+
+        public async Task<List<ProductWithPriceDto>> GetProductsByWarehouseAndCategoryAsync(
+            int warehouseId, int categoryId, CancellationToken ct)
         {
-            // 1. جيبي IDs المنتجات اللي في المخزن والفئة دي
-            var productIds = await _repo.GetProductIdsByWarehouseAndCategoryAsync(warehouseId, categoryId, ct);
 
-            if (!productIds.Any())
-                throw new NotFoundException("No products found.", "لا توجد منتجات.");
+            var warehouse = await _warehouseRepo.GetByIdAsync(warehouseId);
+            // 1️⃣ جيبي البيانات من الريبو
+            var warehouseProducts = await _repo.GetByWarehouseCategoryCountryAsync(warehouseId, categoryId, warehouse.CountryId, ct);
 
-            // 2. جيبي تفاصيل المنتجات
-            var products = await _productRepo.GetProductsByIdsAsync(productIds, ct);
+            // 2️⃣ حمّلي الأسعار (من الريبو بتاع ProductCountryPrice)
+            var prices = await _productCountryPriceRepo
+                .GetAllAsync(ct); // أو Query مخصص حسب الحاجة
 
-            // 3. جيبي أسعارها للبلد المطلوب
-            var prices = await _productCountryPriceRepo.GetPricesByProductIdsAndCountryAsync(productIds, countryId, ct);
+            // 3️⃣ اعملي الـ mapping يدوي هنا إلى DTO
+            var result = warehouseProducts.Select(wp =>
+            {
+                var price = prices.FirstOrDefault(p =>
+                    p.ProductId == wp.product.Id && p.CountryId == warehouse.CountryId)?.Amount ?? 0;
 
-            // 4. ركّبي النتيجة
-            var result = (from p in products
-                          join pr in prices on p.Id equals pr.ProductId into prj
-                          from pr in prj.DefaultIfEmpty()
-                          select new ProductWithPriceDto
-                          {
-                              ProductId = p.Id,
-                              NameEn = p.NameEn,
-                              NameAr = p.NameAr,
-                              DescriptionEn = p.DescriptionEn,
-                              DescriptionAr = p.DescriptionAr,
-                              Price = pr?.Amount ?? 0,
-                              CurrencyEn = pr?.Country?.CurrencyEn,
-                              CurrencyAr = pr?.Country?.CurrencyAr,
-                              CountryCode = pr?.Country?.CountryCode,
-                          }).ToList();
+                return new ProductWithPriceDto
+                {
+                    Id = wp.Id,
+                    ProductId = wp.product.Id,
+                    NameEn = wp.product.NameEn,
+                    NameAr = wp.product.NameAr,
+                    CategoryName = wp.product.Category.NameEn,
+                    WarehouseName = wp.warehouse.Name,
+                    CountryName = wp.warehouse.Country.NameEn,
+                    CurrencyEn = wp.warehouse.Country.CurrencyEn,
+                    CurrencyAr = wp.warehouse.Country.CurrencyAr,
+                    Price = price,
+                    CountryCode = wp.warehouse.Country.CountryCode,
+                    DescriptionEn = wp.product.DescriptionEn,
+                    DescriptionAr = wp.product.DescriptionAr,
+                };
+            }).ToList();
 
             return result;
+        }
+
+
+
+
+        public async Task DeleteByWarehouseIdAndProductId(int warehouseId, int productId, CancellationToken ct = default)
+        {
+            var entity = await _repo.Query()
+                //.Include(c => c.Children)
+                .FirstOrDefaultAsync(c => c.productId == productId && c.warehouseId == warehouseId, ct)
+?? throw new NotFoundException(
+    $"Warehouse Category with warehouseId {warehouseId} and productId {productId} not found.",
+    $"العلاقة بين المخزن بالمعرف {warehouseId} المنتج بالمعرف {productId} غير موجودة."
+);
+
+
+            //if (entity.Children.Any())
+            //    throw new InvalidOperationException("Cannot delete a category that has child categories.");
+
+            //// Soft delete
+            //entity.IsDeleted = true;
+            _repo.Delete(entity);
+
+            await _uow.SaveChangesAsync(ct);
         }
 
 
