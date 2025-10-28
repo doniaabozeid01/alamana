@@ -323,6 +323,22 @@
   },
   {
     "ContainingType": "alamana.Controllers.ProductCountryPriceController",
+    "Method": "GetProductCountryPriceByProductId",
+    "RelativePath": "api/ProductCountryPrice/GetProductsByCountryIdAsync/{countryId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "countryId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "alamana.Controllers.ProductCountryPriceController",
     "Method": "UpdateProductCountryPrice",
     "RelativePath": "api/ProductCountryPrice/UpdateProductCountryPrice/{id}",
     "HttpMethod": "PUT",
@@ -372,6 +388,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "alamana.Controllers.ProductsController",
+    "Method": "GetAllProductsAsync",
+    "RelativePath": "api/Products/GetAllProductsAsync",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -672,6 +698,27 @@
   },
   {
     "ContainingType": "alamana.Controllers.WarehouseProductController",
+    "Method": "DeleteByWarehouseIdAndCategoryId",
+    "RelativePath": "api/WarehouseProduct/DeleteByWarehouseId/{warehouseId}/AndProductId/{productId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "warehouseId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "alamana.Controllers.WarehouseProductController",
     "Method": "DeleteWarehouseProduct",
     "RelativePath": "api/WarehouseProduct/DeleteWarehouseProduct/{id}",
     "HttpMethod": "DELETE",
@@ -701,11 +748,6 @@
       },
       {
         "Name": "categoryId",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "countryId",
         "Type": "System.Int32",
         "IsRequired": false
       }

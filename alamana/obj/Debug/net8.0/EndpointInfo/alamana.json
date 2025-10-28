@@ -572,6 +572,29 @@
         }
       }
     },
+    "/api/ProductCountryPrice/GetProductsByCountryIdAsync/{countryId}": {
+      "get": {
+        "tags": [
+          "ProductCountryPrice"
+        ],
+        "parameters": [
+          {
+            "name": "countryId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Products/GetProducts": {
       "get": {
         "tags": [
@@ -722,6 +745,18 @@
               "format": "int32"
             }
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Products/GetAllProductsAsync": {
+      "get": {
+        "tags": [
+          "Products"
         ],
         "responses": {
           "200": {
@@ -1233,10 +1268,34 @@
               "type": "integer",
               "format": "int32"
             }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/WarehouseProduct/DeleteByWarehouseId/{warehouseId}/AndProductId/{productId}": {
+      "delete": {
+        "tags": [
+          "WarehouseProduct"
+        ],
+        "parameters": [
+          {
+            "name": "warehouseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           },
           {
-            "name": "countryId",
-            "in": "query",
+            "name": "productId",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "integer",
               "format": "int32"

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("alamana.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+79dba132f18972a41939a3d565e45d84c72d3d05")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+96af023d61390e47204481fa96a7769f302f800b")]
 [assembly: System.Reflection.AssemblyProductAttribute("alamana.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("alamana.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
